@@ -1,0 +1,21 @@
+{
+    "name": "rentaserver/steam-web-api",
+    "description": "Easy Steam API wrapper using Objects",
+    "type": "library",
+    "license": "ISC",
+    "authors": [
+        {
+            "name": "Nikki",
+            "email": "nikki@nikkii.us"
+        }
+    ],
+	"autoload": {
+		"psr-4": {
+			"RentAServer\\SteamWebAPI\\": "src/"
+		}
+	},
+    "require": {
+		"illuminate/support": "~5.1",
+		"guzzlehttp/guzzle": "~6.0"
+	}
+}
