@@ -11,7 +11,7 @@ class SteamWebAPIServiceProvider extends ServiceProvider {
 	 */
 	public function boot() {
 		//
-		$this->app->alias('steamapi::webapi', 'RentAServer\Services\SteamWebAPI');
+		$this->app->alias('steamapi::webapi', 'RentAServer\SteamWebAPI\SteamWebAPI');
 	}
 
 	/**
