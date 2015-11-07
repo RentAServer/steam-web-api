@@ -1,8 +1,8 @@
 <?php namespace RentAServer\SteamWebAPI;
 
 use Illuminate\Support\ServiceProvider;
-use RentAServer\Console\Commands\GenerateSteamDocCommand;
-use RentAServer\Console\Commands\SteamAPIUpdate;
+use RentAServer\SteamWebAPI\Commands\GenerateSteamDocCommand;
+use RentAServer\SteamWebAPI\Commands\SteamAPIUpdate;
 
 class SteamWebAPIServiceProvider extends ServiceProvider {
 

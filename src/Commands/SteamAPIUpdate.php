@@ -1,4 +1,4 @@
-<?php namespace RentAServer\Console\Commands;
+<?php namespace RentAServer\SteamWebAPI\Commands;
 
 use Illuminate\Console\Command;
 use RentAServer\SteamWebAPI\SteamWebAPI;
