@@ -4,13 +4,17 @@ use IllegalArgumentException;
 use stdClass;
 use GuzzleHttp\Client;
 
+/**
+ * @inheritdoc \RentAServer\SteamWebAPI\Gen\SteamWebAPIDefinition
+ * @package RentAServer\SteamWebAPI
+ */
 class SteamWebAPI {
 
 	private $cachePath;
 
 	public $key;
 
-	private $interfaces = [];
+	public $interfaces = [];
 
 	public function __construct($key, $cachePath, $scheme = 'http') {
 		$this->key = $key;
@@ -30,6 +34,24 @@ class SteamWebAPI {
 		$this->interfaces[$property] = $this->LoadAPI($property);
 
 		return $this->interfaces[$property];
+	}
+
+	public function GetAPIList() {
+		$dir = opendir($this->cachePath);
+
+		$out = [];
+
+		while ($file = readdir($dir)) {
+			if ($file[0] == '.') {
+				continue;
+			}
+
+			$out[] = substr($file, 0, strpos($file, '.'));
+		}
+
+		closedir($dir);
+
+		return $out;
 	}
 
 	public function LoadAPI($name) {
@@ -69,7 +91,7 @@ class SteamWebAPI {
 		return array_merge($info, [ 'key' => $this->key ]);
 	}
 
-	public function request($api, $method, $version, array $info, $method = false) {
+	public function request($api, $method, $version, array $info, $http_method = 'GET') {
 		$version = 'v' . str_pad("$version", 4, "0", STR_PAD_LEFT);
 
 		$url = sprintf("%s/%s/%s/", $api, $method, $version);
@@ -82,7 +104,9 @@ class SteamWebAPI {
 			$options['query'] = $info;
 		}
 
-		$res = $this->client->request($method, $url, $options);
+		echo $url;
+
+		$res = $this->client->request($http_method, $url, $options);
 
 		$json = json_decode($res->getBody());
 

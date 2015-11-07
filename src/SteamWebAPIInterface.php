@@ -12,6 +12,10 @@ class SteamWebAPIInterface {
 		$this->methods = $methods;
 	}
 
+	public function getMethods() {
+		return $this->methods;
+	}
+
 	public function __call($name, $arguments) {
 		if (!empty($this->methods->{$name})) {
 			$api = $this->methods->{$name};
@@ -57,7 +61,7 @@ class SteamWebAPIInterface {
 
 			$args['key'] = $this->api->key;
 
-			return $this->api->request($this->name, $name, $api->version, $args, $api->httpmethod == 'POST');
+			return $this->api->request($this->name, $name, $api->version, $args, $api->httpmethod);
 		}
 	}
 }
