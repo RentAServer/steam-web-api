@@ -3,12 +3,12 @@
 use IllegalArgumentException;
 use stdClass;
 use GuzzleHttp\Client;
+use RentAServer\SteamWebAPI\Gen\SteamWebAPIDefinition;
 
 /**
- * @inheritdoc \RentAServer\SteamWebAPI\Gen\SteamWebAPIDefinition
  * @package RentAServer\SteamWebAPI
  */
-class SteamWebAPI {
+class SteamWebAPI implements SteamWebAPIDefinition {
 
 	private $cachePath;
 
