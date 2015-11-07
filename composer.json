@@ -18,5 +18,10 @@
 		"illuminate/support": "~5.1",
 		"illuminate/console": "~5.1",
 		"guzzlehttp/guzzle": "~6.0"
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"php artisan steamapi:update"
+		]
 	}
 }

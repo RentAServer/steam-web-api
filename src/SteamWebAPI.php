@@ -104,8 +104,6 @@ class SteamWebAPI {
 			$options['query'] = $info;
 		}
 
-		echo $url;
-
 		$res = $this->client->request($http_method, $url, $options);
 
 		$json = json_decode($res->getBody());

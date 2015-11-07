@@ -35,7 +35,7 @@ class GenerateSteamDocCommand extends Command {
 							$def .= ' = null';
 						}
 
-						$iface .= sprintf("\t * @param %s %s %s", datatype($param->type), '$' . $param->name, isset($param->description)?$param->description:'') . "\n";
+						$iface .= sprintf("\t * @param %s %s %s", $this->datatype($param->type), '$' . $param->name, isset($param->description)?$param->description:'') . "\n";
 						$params[] = $def;
 					}
 				}
@@ -57,5 +57,13 @@ class GenerateSteamDocCommand extends Command {
 		$apidoc .= "interface SteamWebAPIDefinition {\n}\n";
 
 		file_put_contents(__DIR__ . '/../Gen/SteamWebAPIDefinition.php', $apidoc);
+	}
+
+	private function datatype($type) {
+		switch ($type) {
+		case 'uint32':
+			return 'int';
+		}
+		return 'string';
 	}
 }
